@@ -1,47 +1,53 @@
 # **Finding Lane Lines on the Road** 
 
-## Writeup Template
+## Goal
 
-### You can use this file as a template for your writeup if you want to submit it as a markdown file. But feel free to use some other method and submit a pdf if you prefer.
-
----
-
-**Finding Lane Lines on the Road**
-
-The goals / steps of this project are the following:
-* Make a pipeline that finds lane lines on the road
-* Reflect on your work in a written report
-
-
-[//]: # (Image References)
-
-[image1]: ./examples/grayscale.jpg "Grayscale"
+For all given images of the video we need to find and recognaze the lane lines on left and right sides.
 
 ---
 
-### Reflection
+## Algirithm
 
-### 1. Describe your pipeline. As part of the description, explain how you modified the draw_lines() function.
+My algorithm consisted of 9 steps.
 
-My pipeline consisted of 5 steps. First, I converted the images to grayscale, then I .... 
+### *Step one*
+Convert the image to HLS color space.
 
-In order to draw a single line on the left and right lanes, I modified the draw_lines() function by ...
+### *Step two*
+Filtered a white and yellow lines.
 
-If you'd like to include images to show how the pipeline works, here is how to include an image: 
+### *Step three*
+Convert the image to GrayScale color space.
 
-![alt text][image1]
+### *Step four*
+Gaussian blur on the image is helps us reduce noise.
+
+### *Step five*
+Canny edge detection. We used this algorithm to detect edges on the image. 
+
+### *Step six*
+Defining region of interest helps us concentrate our attention only current region, region where we find the lane lines. 
+
+### *Step seven*
+Apply Hough transform to detect lines on our image.
+
+### *Step eight*
+Separeting lines between left and right side by slope. First of all we must filter horizontal and vertical slope.
+
+### *Step nine*
+And finally, we add these lanes to our original image.
+
+## Identify potential shortcomings with your current pipeline
+
+First of all my lane lines are rattling.
+
+Second potential shortcoming would be what would happen when we lost one of any lane lines, doesn't matter left or right one. 
+
+And finally shortcoming could be if rain will happen. I think my algorithm will not abble to see the mirrored lane lines. 
 
 
-### 2. Identify potential shortcomings with your current pipeline
+## Suggest possible improvements to your pipeline
 
+A possible improvement would be to apply linear reggression to find mean slope of lines.
 
-One potential shortcoming would be what would happen when ... 
-
-Another shortcoming could be ...
-
-
-### 3. Suggest possible improvements to your pipeline
-
-A possible improvement would be to ...
-
-Another potential improvement could be to ...
+Another potential improvement could be to new apgorithm to detect lane lines after rain too.
