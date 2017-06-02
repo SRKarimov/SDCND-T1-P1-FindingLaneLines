@@ -1,5 +1,6 @@
 # **Finding Lane Lines on the Road** 
 
-## Goal
+## **Overview**
+Detected highway lane lines on a video stream.
 
-For all given images of the video we need to find and recognaze the lane lines on left and right sides.
+Used OpencV image analysis techniques to identify lines, including Hough Transforms and Canny edge detection.
